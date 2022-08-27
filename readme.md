@@ -53,7 +53,7 @@ pip3 install python-dotenv
 
 9. Clone a `.env` from `.env.sample`
 ```
-mv .env.sample .env
+cp .env.sample .env
 ```
 
 10. Change environment variables according to your need
