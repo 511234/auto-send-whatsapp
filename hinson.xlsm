@@ -1,0 +1,76 @@
+Sub WebWhatsApp()
+
+'Activate Selenium Type Library: Tools > References
+
+Dim bot As New WebDriver
+Dim ks As New Keys
+
+'Init New Chrome instance & navigate to WebWhatsApp
+bot.Start "Chrome", "https://web.whatsapp.com/"
+bot.Get "/"
+
+'Ask user to scan the QR code. Once logged in, Continue with the macro
+MsgBox "Please scan the QR code."
+
+'Determintate number of messages by idetifying the number of last rows n Column A
+lastrow = Cells(Rows.Count, 1).End(xlUp).Row
+
+'search phonenumber, press enter, paste text into Webwhatsapp, press Enter to send message
+
+For i = 2 To lastrow
+    'Get seach text (phone number or name) from worksheet
+    searchtext = Sheets(1).Range("A" & i).Value
+    
+    'Get textmessage from worksheet
+    textmessage = Sheets(1).Range("C" & i).Value
+    
+    'Clic in the searchbox
+    bot.FindElementByXPath("//*[@id='side']/div[1]/div/div/div[2]/div/div[2]").Click
+   
+    'wait 1000MS
+    bot.Wait (1000)
+    
+    'insert search text (Phonenumber)
+    bot.SendKeys (searchtext)
+    
+    'wait 1000MS
+    bot.Wait (1000)
+    
+    ' Press Enter to comfirm search text
+    'bot.SendKeys (ks.Enter)
+    
+    If Not bot.FindElementByXPath("//*[@id='pane-side']/div[1]/div/div/div[1]") Then
+
+    bot.FindElementByXPath("//*[@id='pane-side']/div[1]/div/div/div[1]").Click
+    
+
+     'wait 1000MS
+    bot.Wait (1000)
+    
+    'load message into Webwhatsapp
+    bot.SendKeys (textmessage)
+     
+     'wait 1000MS
+    bot.Wait (1000)
+    
+    ' Press Enter to comfirm search text
+    bot.SendKeys (ks.Enter)
+    
+    ' finish the send and so the result
+   Range("B" & i).Value = "Sent"
+    End If
+
+    
+
+Next i
+
+'Get notification once done
+
+MsgBox "Done"
+
+    
+
+End Sub
+
+
+
