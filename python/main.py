@@ -1,19 +1,26 @@
+import re
 import time
 from urllib.parse import quote
+from operator import itemgetter
 from webbrowser import open
-import pyautogui
-from dotenv import dotenv_values
 
-config = dotenv_values(".env")
+import pyautogui
+
+from helper.check_config import check_config
+
 receiver = "+85212345678"
 message = "Hi34567"
 WIDTH, HEIGHT = pyautogui.size()
 
 
 def main():
-    for key, value in config.items():
-        print(key, value)
     try:
+        sheet_name, raw_url = {**check_config()}.values()
+        print("main")
+        print(sheet_name, raw_url)
+        sheet_url = re.search(r"\/d\/(.*?)\/", raw_url).group(1)
+        print(sheet_url)
+        
         open(
             "https://web.whatsapp.com/send?phone="
             + receiver
