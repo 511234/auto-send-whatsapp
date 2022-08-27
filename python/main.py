@@ -4,6 +4,7 @@ import pandas
 import time
 from operator import itemgetter
 from webbrowser import open
+from urllib.parse import quote
 
 import pyautogui
 
@@ -33,19 +34,23 @@ def main():
         print("whatsapp_list")
         print(whatsapp_list)
 
-        return
-        open(
-            "https://web.whatsapp.com/send?phone="
-            + receiver
-            + "&text="
-            + quote(message)
-        )
-        time.sleep(5)
-        print("After sleeping for 5 seconds")
-        pyautogui.click(WIDTH * 0.65, HEIGHT * 0.6)
-        print(pyautogui.position())
-        pyautogui.press("enter")
-
+        message = "lulu testing auto whatsapp"
+        for whatsapp_receiver in whatsapp_list:
+            name = whatsapp_receiver.get("name")
+            print(f"Going to whatsapp {name}...")
+            phone = whatsapp_receiver.get("phone")
+            open(
+                "https://web.whatsapp.com/send?phone="
+                + phone
+                + "&text="
+                + quote(message)
+            )
+            time.sleep(5)
+            print("Before sending message...")
+            pyautogui.click(WIDTH * 0.65, HEIGHT * 0.6)
+            pyautogui.press("enter")
+            time.sleep(5)
+            print("After sending message...")
     except Exception as e:
         print("not working")
         print(e)
