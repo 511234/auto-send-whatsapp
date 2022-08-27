@@ -39,11 +39,10 @@ For i = 2 To lastrow
     ' Press Enter to comfirm search text
     'bot.SendKeys (ks.Enter)
     
-    If Not bot.FindElementByXPath("//*[@id='pane-side']/div[1]/div/div/div[1]") Then
+    ' If Not bot.FindElementByXPath("//*[@id='pane-side']/div[1]/div/div/div[1]") Then
 
     bot.FindElementByXPath("//*[@id='pane-side']/div[1]/div/div/div[1]").Click
     
-
      'wait 1000MS
     bot.Wait (1000)
     
