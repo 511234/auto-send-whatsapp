@@ -1,6 +1,6 @@
 ## Background
 
-My gooooood🐷 friend wants to programmatically send Whatsapp to a bunch of people. He tried VBA but faced many constraints. I turn to Python for some breakthrough. :D
+My gooooood🐷 friend wants to programmatically send Whatsapp to a bunch of people. He tried VBA but faced many constraints. I turn to Python for breakthrough. :D
 
 ## Steps to use:
 
@@ -60,8 +60,8 @@ cp .env.sample .env
 
 10. Change environment variables according to your need
 ```
-CUSTOM_GOOGLE_SHEET_ID=8We12J0DX4S1kcSW1p6lS
 CUSTOM_GOOGLE_SHEET_NAME=工作表 1
+CUSTOM_GOOGLE_SHEET_URL=https://docs.google.com/spreadsheets/d/somerandomnumberstring/edit#gid=0
 ```
 
 11. Run the program
