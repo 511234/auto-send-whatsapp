@@ -1,6 +1,6 @@
 ## Background
 
-My gooooood🐷 friend wants to automatically send Whatsapp to a bunch of people. He tried VBA but has many constraints. I turn to Python for some breakthrough. :D
+My gooooood🐷 friend wants to programmatically send Whatsapp to a bunch of people. He tried VBA but faced many constraints. I turn to Python for some breakthrough. :D
 
 ## Steps to use:
 
