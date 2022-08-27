@@ -8,6 +8,7 @@ from urllib.parse import quote
 
 import pyautogui
 
+from helper.variable_getter import get_name, get_phone
 from helper.check_config import check_config
 from helper.sanitizer import sanitize_url, sanitize_phone
 
@@ -35,13 +36,12 @@ def main():
 
         message = "lulu testing auto whatsapp"
         for whatsapp_receiver in whatsapp_list:
-            name = whatsapp_receiver.get("name")
+            name = get_name(whatsapp_receiver)
             print(f"Going to whatsapp {name}...")
             phone = sanitize_phone(whatsapp_receiver.get("phone"))
             open(f"https://web.whatsapp.com/send?phone={phone}&text={quote(message)}")
             print("Before sending message...")
             time.sleep(5)
-            pyautogui.click(WIDTH * 0.65, HEIGHT * 0.6)
             pyautogui.press("enter")
             time.sleep(5)
             print("Wait for a few seconds before sending to another person...")
