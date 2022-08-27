@@ -8,7 +8,7 @@ from urllib.parse import quote
 
 import pyautogui
 
-from helper.variable_getter import get_name, get_phone
+from helper.variable_getter import get_message, get_name, get_phone
 from helper.check_config import check_config
 from helper.sanitizer import sanitize_url, sanitize_phone
 
@@ -36,6 +36,7 @@ def main():
 
         message = "lulu testing auto whatsapp"
         for whatsapp_receiver in whatsapp_list:
+            message = get_message(whatsapp_receiver) or "default message"
             name = get_name(whatsapp_receiver)
             print(f"Going to whatsapp {name}...")
             phone = sanitize_phone(get_phone(whatsapp_receiver))
