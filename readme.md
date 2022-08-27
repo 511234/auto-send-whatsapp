@@ -2,6 +2,11 @@
 
 My gooooood🐷 friend wants to programmatically send Whatsapp to a bunch of people. He tried VBA but faced many constraints. I turn to Python for breakthrough. :D
 
+## Pre-requisites:
+1. Login Whatsapp onto your default browser
+2. Prepare a Google Sheet with privacy set as public and have a column for phone
+3. Check FAQ if you are using Mac OS
+
 ## Steps to use:
 
 1. Install python if you haven't
