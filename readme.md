@@ -47,10 +47,7 @@ source env/bin/activate
 
 8. Install dependencies
 ```
-pip3 install keyboard
-pip3 install pandas
-pip3 install pyautogui
-pip3 install python-dotenv
+pip3 install keyboard pandas pyautogui python-dotenv
 ```
 
 9. Clone a `.env` from `.env.sample`
