@@ -9,7 +9,7 @@ from urllib.parse import quote
 import pyautogui
 
 from helper.check_config import check_config
-from helper.sanitize_url import sanitize_url
+from helper.sanitizer import sanitize_url, sanitize_phone
 
 WIDTH, HEIGHT = pyautogui.size()
 config_keys = ("column_names", "sheet_name", "url")
@@ -25,7 +25,6 @@ def main():
 
         raw_list = pandas.read_csv(sanitized_url).to_dict("records")
         print(raw_list)
-
         whatsapp_list = [
             {**raw_people, "phone": str(int(raw_people.get("phone")))}
             for raw_people in raw_list
@@ -38,19 +37,14 @@ def main():
         for whatsapp_receiver in whatsapp_list:
             name = whatsapp_receiver.get("name")
             print(f"Going to whatsapp {name}...")
-            phone = whatsapp_receiver.get("phone")
-            open(
-                "https://web.whatsapp.com/send?phone="
-                + phone
-                + "&text="
-                + quote(message)
-            )
-            time.sleep(5)
+            phone = sanitize_phone(whatsapp_receiver.get("phone"))
+            open(f"https://web.whatsapp.com/send?phone={phone}&text={quote(message)}")
             print("Before sending message...")
+            time.sleep(5)
             pyautogui.click(WIDTH * 0.65, HEIGHT * 0.6)
             pyautogui.press("enter")
             time.sleep(5)
-            print("After sending message...")
+            print("Wait for a few seconds before sending to another person...")
     except Exception as e:
         print("not working")
         print(e)
