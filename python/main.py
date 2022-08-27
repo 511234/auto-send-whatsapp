@@ -38,7 +38,7 @@ def main():
         for whatsapp_receiver in whatsapp_list:
             name = get_name(whatsapp_receiver)
             print(f"Going to whatsapp {name}...")
-            phone = sanitize_phone(whatsapp_receiver.get("phone"))
+            phone = sanitize_phone(get_phone(whatsapp_receiver))
             open(f"https://web.whatsapp.com/send?phone={phone}&text={quote(message)}")
             print("Before sending message...")
             time.sleep(5)
