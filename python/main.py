@@ -1,3 +1,4 @@
+import pandas
 import re
 import time
 from urllib.parse import quote
@@ -18,9 +19,14 @@ def main():
         sheet_name, raw_url = {**check_config()}.values()
         print("main")
         print(sheet_name, raw_url)
-        sheet_url = re.search(r"\/d\/(.*?)\/", raw_url).group(1)
-        print(sheet_url)
-        
+        # Get sheet ID between /d/ and /
+        sheet_id = re.search(r"\/d\/(.*?)\/", raw_url).group(1)
+        print(sheet_id)
+        url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={quote(sheet_name)}"
+        print(url)
+        content = pandas.read_csv(url)
+        print(content)
+
         open(
             "https://web.whatsapp.com/send?phone="
             + receiver

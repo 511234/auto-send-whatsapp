@@ -30,6 +30,7 @@ cd python
 ```
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
+pip3 install --upgrade pip
 
 pip3 install virtualenv
 ```
@@ -46,8 +47,9 @@ source env/bin/activate
 
 8. Install dependencies
 ```
-pip3 install pyautogui
 pip3 install keyboard
+pip3 install pandas
+pip3 install pyautogui
 pip3 install python-dotenv
 ```
 
