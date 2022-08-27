@@ -1,32 +1,39 @@
+import json
+import math
 import pandas
-import re
 import time
-from urllib.parse import quote
 from operator import itemgetter
 from webbrowser import open
 
 import pyautogui
 
 from helper.check_config import check_config
+from helper.sanitize_url import sanitize_url
 
-receiver = "+85212345678"
-message = "Hi34567"
 WIDTH, HEIGHT = pyautogui.size()
+config_keys = ("column_names", "sheet_name", "url")
 
 
 def main():
     try:
-        sheet_name, raw_url = {**check_config()}.values()
-        print("main")
-        print(sheet_name, raw_url)
-        # Get sheet ID between /d/ and /
-        sheet_id = re.search(r"\/d\/(.*?)\/", raw_url).group(1)
-        print(sheet_id)
-        url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={quote(sheet_name)}"
-        print(url)
-        content = pandas.read_csv(url)
-        print(content)
+        column_names, sheet_name, url = {**check_config()}.values()
+        sanitized_url = sanitize_url(sheet_name, url)
+        column_names_list = json.loads(column_names)
+        print(column_names_list)
+        print(type(column_names_list))
 
+        raw_list = pandas.read_csv(sanitized_url).to_dict("records")
+        print(raw_list)
+
+        whatsapp_list = [
+            {**raw_people, "phone": str(int(raw_people.get("phone")))}
+            for raw_people in raw_list
+            if raw_people.get("phone") and not math.isnan(raw_people.get("phone"))
+        ]
+        print("whatsapp_list")
+        print(whatsapp_list)
+
+        return
         open(
             "https://web.whatsapp.com/send?phone="
             + receiver
