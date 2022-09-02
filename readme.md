@@ -1,8 +1,8 @@
 ## Background
 
-My gooooood🐷 friend wants to programmatically send Whatsapp to a bunch of people. He tried VBA but faced many constraints. I turn to Python for breakthrough. :D
+My gooooood🐷 friend wants to programmatically send Whatsapp to a bunch of people. He tried VBA but faced many constraints. I turn to Python for breakthrough. :D 🐷🍄
 
-# Description
+## Description
 Using Python, read contact info from Google Sheet and send custom Whatsapp messages to recipients through Whatsapp Web.
 
 ## Pre-requisites:
@@ -55,7 +55,7 @@ source env/bin/activate
 
 8. Install dependencies
 ```
-pip3 install keyboard pandas pyautogui python-dotenv
+pip3 install flask keyboard pandas pyautogui python-dotenv
 ```
 
 9. Clone a `.env` from `.env.sample`
@@ -79,3 +79,12 @@ python3 main.py
 Message is shown on Whatsapp Web but pyautogui `click` and `typewrite` are not working.
 
 > It's about mac setting. Go to `System Preferences` > `Security and Privacy` > `Privacy` > `Accessibility` > Enable `Visual Studio Code`, your other IDE or your terminal
+
+Intellisense not working
+> Ctrl + shift + p >> Python: Select Interpreter
+
+-------------------------
+
+🦔 Github workflow
+
+- Add v* tag to publish a release
