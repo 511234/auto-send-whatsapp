@@ -1,3 +1,6 @@
+# https://github.com/actions/create-release
+# https://docs.github.com/en/actions/learn-github-actions/contexts
+
 on:
   push:
     # Sequence of patterns matched against refs/tags
@@ -21,9 +24,5 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
           draft: false
           prerelease: false
