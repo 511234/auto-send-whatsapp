@@ -36,6 +36,6 @@ def send(sheet_name, url):
             time.sleep(5)
             print("Wait for a few seconds before sending to another person...")
     except Exception as e:
-        print("not working")
+        print("not working, please find your best friend")
         print(e)
 

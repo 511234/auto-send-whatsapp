@@ -55,7 +55,7 @@ source env/bin/activate
 
 8. Install dependencies
 ```
-pip3 install flask keyboard pandas pyautogui python-dotenv
+pip3 install -r requirements.txt
 ```
 
 9. Clone a `.env` from `.env.sample`
@@ -89,3 +89,10 @@ Intellisense not working
 
 - Add v* tag to publish a release
 - `pip freeze > requirements.txt` to export existing packages
+
+
+-------------------------
+
+🦔 Deploy to server?
+https://github.com/asweigart/pyautogui/issues/632
+https://www.pythonanywhere.com/forums/topic/28076/
