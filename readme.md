@@ -85,14 +85,14 @@ Intellisense not working
 
 -------------------------
 
-🦔 Github workflow
+### 🦔 Github workflow
 
-- Add v* tag to publish a release
-- `pip freeze > requirements.txt` to export existing packages
+- Add v* tag to publish a release  
+- `pip freeze > requirements.txt` to export existing packages  
 
 
 -------------------------
 
-🦔 Deploy to server?
-https://github.com/asweigart/pyautogui/issues/632
-https://www.pythonanywhere.com/forums/topic/28076/
+### 🦔 Deploy to server?  
+https://github.com/asweigart/pyautogui/issues/632  
+https://www.pythonanywhere.com/forums/topic/28076/  
