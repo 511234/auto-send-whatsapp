@@ -88,3 +88,4 @@ Intellisense not working
 🦔 Github workflow
 
 - Add v* tag to publish a release
+- `pip freeze > requirements.txt` to export existing packages
