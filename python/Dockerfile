@@ -14,7 +14,7 @@ RUN pip3 install virtualenv
 RUN virtualenv .venv
 RUN /bin/bash -c "source .venv/bin/activate"
 RUN pip3 install --upgrade setuptools pip
-RUN pip3 install flask keyboard pyvirtualdisplay pyautogui pandas python-dotenv python-xlib
+RUN pip3 install flask keyboard pyvirtualdisplay pyautogui pandas python-xlib
 COPY . .
 EXPOSE 28311
 RUN pwd && ls
