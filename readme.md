@@ -45,17 +45,19 @@ pip3 install virtualenv
 
 6. Create a virtual environment
 ```
-python3 -m venv env
+python3.9 -m venv venv
 ```
 
 7. Enter the virtual environment
 ```
-source env/bin/activate
+source venv/bin/activate
 ```
 
 8. Install dependencies
 ```
 pip3 install -r requirements.txt
+or
+pip3 install flask pyvirtualdisplay pyautogui
 ```
 
 9. Clone a `.env` from `.env.sample`
@@ -96,3 +98,24 @@ Intellisense not working
 ### 🦔 Deploy to server?  
 https://github.com/asweigart/pyautogui/issues/632  
 https://www.pythonanywhere.com/forums/topic/28076/  
+
+-------------------------
+
+### 🦔 Changing VS Code Python Interpreter
+
+```
+Command + ,
+
+Python: Venv Path
+Path to folder with a list of Virtual Environments (e.g. ~/.pyenv, ~/Envs, ~/.virtualenvs).
+
+~/python/venv, ~/python/env
+```
+
+Then  
+
+```
+Command + Shift + P
+Python: Select Interpreter
+./python/venv/bin/python
+```
