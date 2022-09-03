@@ -1,6 +1,22 @@
+import logging
 import math
+import os
 import pandas
+import platform
+import sys
+
+from pyvirtualdisplay.display import Display
+
+disp = Display(visible=True, size=(1366, 768), backend="xvfb", use_xauth=True)
+disp.start()
+import Xlib.display
 import pyautogui
+
+if sys.platform == "darwin":
+    pyautogui._pyautogui_osx._display = Xlib.display.Display(os.environ["DISPLAY"])
+elif platform.system() == "Linux":
+    pyautogui._pyautogui_x11._display = Xlib.display.Display(os.environ["DISPLAY"])
+
 import time
 
 from webbrowser import open
@@ -12,17 +28,14 @@ from helper.sanitizer import sanitize_url, sanitize_phone
 
 def send(sheet_name, url):
     try:
-        print("hi")
         sanitized_url = sanitize_url(sheet_name, url)
 
-        raw_list = pandas.read_csv(sanitized_url).to_dict("records")
-        print('hi are we here 1')
+        raw_list = pandas.read_csv(sanitized_url, encoding="utf-8").to_dict("records")
         whatsapp_list = [
             {**raw_people, "phone": str(int(raw_people.get("phone")))}
             for raw_people in raw_list
             if raw_people.get("phone") and not math.isnan(raw_people.get("phone"))
         ]
-        print('hi are we here 3')
 
         for whatsapp_receiver in whatsapp_list:
             message = get_message(whatsapp_receiver) or "default message"
@@ -38,4 +51,3 @@ def send(sheet_name, url):
     except Exception as e:
         print("not working, please find your best friend")
         print(e)
-

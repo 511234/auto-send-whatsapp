@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, render_template, request
 from send_whatsapp import send
 
 app = Flask(__name__)
@@ -13,7 +13,8 @@ def index():
 def members():
     data = request.form.to_dict(flat=True)
     send(**data)
+    return "Nice!"
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=28311)  # watch
+    app.run()

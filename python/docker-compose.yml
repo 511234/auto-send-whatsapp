@@ -1,0 +1,9 @@
+version: '3'
+services:
+  flask:
+    build: ./
+    container_name: auto-send-whatsapp-flask
+    volumes:
+      - .:/app
+    ports:
+      - '28311:28311'

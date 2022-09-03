@@ -55,9 +55,7 @@ source venv/bin/activate
 
 8. Install dependencies
 ```
-pip3 install -r requirements.txt
-or
-pip3 install flask pyvirtualdisplay pyautogui
+pip3 install flask keyboard pyvirtualdisplay pyautogui pandas python-dotenv Xlib
 ```
 
 9. Clone a `.env` from `.env.sample`
