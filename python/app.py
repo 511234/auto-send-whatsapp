@@ -10,11 +10,7 @@ def index():
 
 
 @app.route("/send", methods=["POST"])
-def members():
+def send_message():
     data = request.form.to_dict(flat=True)
     send(**data)
     return "Nice!"
-
-
-if __name__ == "__main__":
-    app.run()
