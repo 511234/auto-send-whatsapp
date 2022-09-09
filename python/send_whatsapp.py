@@ -7,15 +7,9 @@ import sys
 
 from pyvirtualdisplay.display import Display
 
-disp = Display(visible=True, size=(1366, 768), backend="xvfb", use_xauth=True)
-disp.start()
 import Xlib.display
 import pyautogui
 
-if sys.platform == "darwin":
-    pyautogui._pyautogui_osx._display = Xlib.display.Display(os.environ["DISPLAY"])
-elif platform.system() == "Linux":
-    pyautogui._pyautogui_x11._display = Xlib.display.Display(os.environ["DISPLAY"])
 
 import time
 
@@ -44,8 +38,11 @@ def send(sheet_name, url):
             phone = sanitize_phone(get_phone(whatsapp_receiver))
             open(f"https://web.whatsapp.com/send?phone={phone}&text={quote(message)}")
             print("Before sending message...")
-            time.sleep(5)
+            time.sleep(12)
             pyautogui.press("enter")
+            time.sleep(7)
+            pyautogui.hotkey('ctrl', 'w')
+            pyautogui.hotkey('command', 'w')
             time.sleep(5)
             print("Wait for a few seconds before sending to another person...")
     except Exception as e:

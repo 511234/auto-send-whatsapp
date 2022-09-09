@@ -28,11 +28,13 @@ https://www.python.org/downloads/source/
 2. Open a github account and [set up personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 3. Open terminal. Run
+
 ```
 git clone git@github.com:511234/auto-send-whatsapp.git
 ```
 
-4. Run 
+4. Run
+
 ```
 cd auto-send-whatsapp/python
 ```
@@ -65,14 +67,20 @@ source venv/bin/activate
 pip3 install flask keyboard pyvirtualdisplay pyautogui pandas Xlib
 ```
 
-9. Run the program
+9. Enter `/python`
+
+```
+cd python
+```
+
+10. Run the program
 
 ```
 python3 -m flask run --port=28311
 ```
 
 10. Go to website `localhost:28311`  
-Type in Google Sheet name and Google Sheet link.   Hit submit.
+    Type in Google Sheet name and Google Sheet link. Hit submit.
 
 ## FAQ
 
